@@ -9,7 +9,7 @@ namespace Brainfuck.Interpreter.Core
     using System;
     using System.Collections.Generic;
 
-    class ByteList
+    internal class ByteList
     {
         private const int MAX_NODES = 30000;
         private ByteNode current;

@@ -20,7 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,8 +37,9 @@
   <ItemGroup>
     <Compile Include="Core\ByteList.cs" />
     <Compile Include="Core\ByteNode.cs" />
+    <Compile Include="Core\IInterpreter.cs" />
     <Compile Include="Core\Instruction.cs" />
-    <Compile Include="Core\Interpreter.cs" />
+    <Compile Include="Core\InterpreterBase.cs" />
     <Compile Include="Core\NoInputSourceAvailableException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

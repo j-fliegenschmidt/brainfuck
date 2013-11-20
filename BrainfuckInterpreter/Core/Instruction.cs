@@ -9,7 +9,7 @@ namespace Brainfuck.Interpreter.Core
     /// <summary>
     /// Enumeration that represents the Brainfuck commands.
     /// </summary>
-    enum Instruction : byte
+    public enum Instruction : byte
     {
         IncrementPointer = 0x00,
         DecrementPointer = 0x01,

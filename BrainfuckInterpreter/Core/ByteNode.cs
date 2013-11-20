@@ -9,7 +9,7 @@ namespace Brainfuck.Interpreter.Core
     using System;
     using System.Collections.Generic;
 
-    class ByteNode
+    internal class ByteNode
     {
         private Byte value;
         private ByteNode previous;

@@ -12,7 +12,7 @@ namespace Brainfuck.Interpreter.Core
     /// <summary>
     /// </summary>
     [Serializable]
-    class NoInputSourceAvailableException : Exception
+    public class NoInputSourceAvailableException : Exception
     {
     }
 }
