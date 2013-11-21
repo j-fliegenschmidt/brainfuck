@@ -17,7 +17,6 @@ namespace Brainfuck.Interpreter.Core
         private int loopCachePointer;
 
         public event GetInputHandler InputRequested;
-
         public event OutputHandler OutputAvailable;
 
         public InterpreterBase()
@@ -34,29 +33,42 @@ namespace Brainfuck.Interpreter.Core
             {
                 case Instruction.IncrementPointer:
                     this.programSpace.IncrementPointer();
+                    this.CacheInstruction(instr);
                     break;
 
                 case Instruction.DecrementPointer:
                     this.programSpace.DecrementPointer();
+                    this.CacheInstruction(instr);
                     break;
 
                 case Instruction.IncrementValue:
                     this.programSpace.IncrementValue();
+                    this.CacheInstruction(instr);
                     break;
 
                 case Instruction.DecrementValue:
                     this.programSpace.DecrementValue();
+                    this.CacheInstruction(instr);
                     break;
 
                 case Instruction.PrintByte:
                     this.OnOutputAvailable(this.programSpace.Value);
+                    this.CacheInstruction(instr);
                     break;
 
                 case Instruction.ReadByte:
                     this.programSpace.Value = this.OnInputRequested();
+                    this.CacheInstruction(instr);
                     break;
 
                 case Instruction.EndLoop:
+                    if (this.loopStack.Count < 1)
+                    {
+                        throw new InvalidOperationException();
+                    }
+
+                    this.CacheInstruction(instr);
+
                     if (this.programSpace.Value == 0)
                     {
                         loopStack.Pop();
@@ -69,21 +81,25 @@ namespace Brainfuck.Interpreter.Core
                     }
                     else
                     {
-                        int i = this.loopStack.Peek();
+                        int i = this.loopStack.Peek() + 1;
 
                         do
                         {
-                            this.Execute(this.loopCache[++i]);
-                        } while (loopCache[i] != Instruction.EndLoop);
+                            this.Execute(this.loopCache[i]);
+                        } while (loopCache[++i] != Instruction.EndLoop);
                     }
 
                     break;
 
                 case Instruction.BeginLoop:
-                    loopStack.Push(this.loopCachePointer);
+                    this.loopStack.Push(this.loopCachePointer);
+                    this.CacheInstruction(instr);
                     break;
             }
+        }
 
+        private void CacheInstruction(Instruction instr)
+        {
             if (this.loopStack.Count > 0)
             {
                 this.loopCache.Add(instr);
@@ -95,7 +111,7 @@ namespace Brainfuck.Interpreter.Core
         {
             if (this.OutputAvailable != null)
             {
-                this.OnOutputAvailable(output);
+                this.OutputAvailable(output);
             }
         }
 

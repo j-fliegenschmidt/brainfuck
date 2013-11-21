@@ -95,6 +95,7 @@ namespace Brainfuck.Interpreter.Core
                 else
                 {
                     this.current.Next = new ByteNode();
+                    this.current.Next.Previous = this.current;
                     ++this.nodeCounter;
                 }
             }
