@@ -42,13 +42,15 @@ namespace Tests.BrainfuckInterpreter.Core
                 output.Add(o);
             };
 
-            for (int i = 0; i < 10; i++)
+            const int RUNS = 20;
+
+            for (int i = 0; i < RUNS; i++)
             {
                 interpreter.Execute(Instruction.IncrementValue);
                 interpreter.Execute(Instruction.IncrementPointer);
             }
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < RUNS; i++)
             {
                 interpreter.Execute(Instruction.DecrementPointer);
             }
@@ -58,7 +60,12 @@ namespace Tests.BrainfuckInterpreter.Core
             interpreter.Execute(Instruction.IncrementPointer);
             interpreter.Execute(Instruction.EndLoop);
 
-            Assert.AreEqual(10, output.Count);
+            Assert.AreEqual(RUNS, output.Count);
+
+            for (int i = 0; i < output.Count; i++)
+            {
+                Assert.AreEqual(1, output[i]);
+            }
         }
     }
 }
