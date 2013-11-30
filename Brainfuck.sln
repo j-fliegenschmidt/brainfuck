@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainfuckInterpreter", "BrainfuckInterpreter\BrainfuckInterpreter.csproj", "{E34A8419-B4A8-4F1A-86F0-94B207714255}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainfuckInterpreter.Core", "BrainfuckInterpreter\BrainfuckInterpreter.Core.csproj", "{E34A8419-B4A8-4F1A-86F0-94B207714255}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrainfuckInterpreter.Tests", "BrainfuckInterpreter.Tests\BrainfuckInterpreter.Tests.csproj", "{909A40DC-A371-44DA-A075-015E40F1F60A}"
 EndProject

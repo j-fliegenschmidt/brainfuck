@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Brainfuck.Interpreter.Core</RootNamespace>
-    <AssemblyName>BrainfuckInterpreter</AssemblyName>
+    <AssemblyName>BrainfuckInterpreter.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
