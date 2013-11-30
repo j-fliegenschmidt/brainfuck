@@ -7,7 +7,7 @@
     <ProjectGuid>{E34A8419-B4A8-4F1A-86F0-94B207714255}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Brainfuck.Interpreter</RootNamespace>
+    <RootNamespace>Brainfuck.Interpreter.Core</RootNamespace>
     <AssemblyName>BrainfuckInterpreter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -35,13 +35,15 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\ByteList.cs" />
-    <Compile Include="Core\ByteNode.cs" />
-    <Compile Include="Core\IInterpreter.cs" />
-    <Compile Include="Core\Instruction.cs" />
-    <Compile Include="Core\InterpreterBase.cs" />
-    <Compile Include="Core\NoInputSourceAvailableException.cs" />
+    <Compile Include="CharacterInterpreter.cs" />
+    <Compile Include="ByteList.cs" />
+    <Compile Include="ByteNode.cs" />
+    <Compile Include="IInterpreter.cs" />
+    <Compile Include="Instruction.cs" />
+    <Compile Include="InterpreterBase.cs" />
+    <Compile Include="Exceptions\NoInputSourceAvailableException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringInterpreter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

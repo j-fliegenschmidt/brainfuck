@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Brainfuck.Interpreter.Core
+namespace Brainfuck.Interpreter.Core.Exceptions
 {
     using System;
     using System.Collections.Generic;

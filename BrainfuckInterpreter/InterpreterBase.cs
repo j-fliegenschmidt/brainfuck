@@ -8,14 +8,15 @@ namespace Brainfuck.Interpreter.Core
 {
     using System;
     using System.Collections.Generic;
+    using Brainfuck.Interpreter.Core.Exceptions;
 
     public class InterpreterBase : IInterpreter
     {
         private Stack<List<Instruction>> loopStack;
         private ByteList programSpace;
 
-        public event GetInputHandler InputRequested;
-        public event OutputHandler OutputAvailable;
+        public event GetInputHandler<Byte> InputRequested;
+        public event OutputHandler<Byte> OutputAvailable;
 
         public InterpreterBase()
         {

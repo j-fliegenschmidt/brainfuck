@@ -9,6 +9,7 @@ namespace Tests.BrainfuckInterpreter.Core
     using System;
     using System.Collections.Generic;
     using Brainfuck.Interpreter.Core;
+    using Brainfuck.Interpreter.Core.Exceptions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>

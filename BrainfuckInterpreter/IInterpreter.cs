@@ -12,22 +12,22 @@ namespace Brainfuck.Interpreter.Core
     /// 
     /// </summary>
     /// <returns></returns>
-    public delegate Byte GetInputHandler();
+    public delegate T GetInputHandler<T>();
 
     /// <summary>
     /// 
     /// </summary>
     /// <param name="output"></param>
-    public delegate void OutputHandler(Byte output);
+    public delegate void OutputHandler<T>(T output);
 
     /// <summary>
     /// The Interpreter interface. All decorator classes must inherit this interface.
     /// </summary>
     public interface IInterpreter
     {
-        event GetInputHandler InputRequested;
+        event GetInputHandler<Byte> InputRequested;
 
-        event OutputHandler OutputAvailable;
+        event OutputHandler<Byte> OutputAvailable;
 
         void Execute(Instruction instr);
     }
