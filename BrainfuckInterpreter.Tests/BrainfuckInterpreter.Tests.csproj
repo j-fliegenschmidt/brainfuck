@@ -47,6 +47,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ByteNode_Test.cs" />
     <Compile Include="InterpreterBase_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
