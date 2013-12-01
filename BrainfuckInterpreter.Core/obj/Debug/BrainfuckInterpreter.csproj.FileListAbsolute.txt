@@ -1,0 +1,5 @@
+C:\Users\Janis Fliegenschmidt\Programming\VS2012 Projects\BrainfuckInterpreter\BrainfuckInterpreter\bin\Debug\BrainfuckInterpreter.dll
+C:\Users\Janis Fliegenschmidt\Programming\VS2012 Projects\BrainfuckInterpreter\BrainfuckInterpreter\bin\Debug\BrainfuckInterpreter.pdb
+C:\Users\Janis Fliegenschmidt\Programming\VS2012 Projects\BrainfuckInterpreter\BrainfuckInterpreter\obj\Debug\BrainfuckInterpreter.dll
+C:\Users\Janis Fliegenschmidt\Programming\VS2012 Projects\BrainfuckInterpreter\BrainfuckInterpreter\obj\Debug\BrainfuckInterpreter.pdb
+C:\Users\Janis Fliegenschmidt\Programming\VS2012 Projects\BrainfuckInterpreter\BrainfuckInterpreter\obj\Debug\BrainfuckInterpreter.csprojResolveAssemblyReference.cache

@@ -1,0 +1,4 @@
+C:\Users\Janis Fliegenschmidt\Programming\VS2012 Projects\BrainfuckInterpreter\BrainfuckInterpreter\bin\Debug\BrainfuckInterpreter.Core.dll
+C:\Users\Janis Fliegenschmidt\Programming\VS2012 Projects\BrainfuckInterpreter\BrainfuckInterpreter\bin\Debug\BrainfuckInterpreter.Core.pdb
+C:\Users\Janis Fliegenschmidt\Programming\VS2012 Projects\BrainfuckInterpreter\BrainfuckInterpreter\obj\Debug\BrainfuckInterpreter.Core.dll
+C:\Users\Janis Fliegenschmidt\Programming\VS2012 Projects\BrainfuckInterpreter\BrainfuckInterpreter\obj\Debug\BrainfuckInterpreter.Core.pdb
