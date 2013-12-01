@@ -27,6 +27,8 @@ namespace Tests.BrainfuckInterpreter
 
             Assert.AreEqual(1, bn.Value);
 
+            Assert.IsFalse(bn.HasNext);
+
             bn.Next = new ByteNode();
 
             Assert.IsTrue(bn.HasNext);
