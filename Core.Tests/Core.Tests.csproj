@@ -52,7 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BrainfuckInterpreter.Core\Core.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{e34a8419-b4a8-4f1a-86f0-94b207714255}</Project>
       <Name>Core</Name>
     </ProjectReference>
