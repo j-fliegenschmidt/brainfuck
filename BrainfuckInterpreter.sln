@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "Core.Tests\Core.Tests.csproj", "{909A40DC-A371-44DA-A075-015E40F1F60A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineTool", "CommandLineTool\CommandLineTool.csproj", "{AC3AFB27-4FFE-4226-8627-1A3070E1C8BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{909A40DC-A371-44DA-A075-015E40F1F60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{909A40DC-A371-44DA-A075-015E40F1F60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{909A40DC-A371-44DA-A075-015E40F1F60A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC3AFB27-4FFE-4226-8627-1A3070E1C8BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3AFB27-4FFE-4226-8627-1A3070E1C8BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC3AFB27-4FFE-4226-8627-1A3070E1C8BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC3AFB27-4FFE-4226-8627-1A3070E1C8BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

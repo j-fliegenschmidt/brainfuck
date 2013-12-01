@@ -4,3 +4,5 @@ Core.Tests/bin/
 Core/obj/
 Core/bin/
 *.suo
+CommandLineTool/bin/
+CommandLineTool/obj/
