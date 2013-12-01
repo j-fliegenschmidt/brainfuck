@@ -1,4 +1,6 @@
-BrainfuckInterpreter/bin/
-BrainfuckInterpreter/obj/
-BrainfuckInterpreter.Tests/obj/
 TestResults
+Core.Tests/obj/
+Core.Tests/bin/
+Core/obj/
+Core/bin/
+*.suo
