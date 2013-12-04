@@ -68,5 +68,29 @@ namespace Tests.BrainfuckInterpreter.Core
                 Assert.AreEqual(1, output[i]);
             }
         }
+
+        [TestMethod]
+        public void StackOverflow()
+        {
+            IInterpreter interpreter = new ByteInterpreter();
+
+            try
+            {
+                interpreter.Execute(Instruction.IncrementValue);
+                interpreter.Execute(Instruction.BeginLoop);
+                interpreter.Execute(Instruction.EndLoop);
+
+                Assert.Fail("This should cause a stack overflow.");
+            }
+            catch (StackOverflowException)
+            {
+                // this is expected
+            }
+            catch (Exception)
+            {
+                Assert.Fail(
+                    "This should cause _nothing but_ a stack overflow.");
+            }
+        }
     }
 }
