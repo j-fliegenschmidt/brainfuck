@@ -14,14 +14,14 @@ namespace Brainfuck.Interpreter.Core
     /// <summary>
     /// Brainfuck Interpreter that takes characters instead of enum values.
     /// </summary>
-    public class CharacterInterpreter
+    public class CharacterInterpreter : IInterpreter<Char>
     {
-        private IInterpreter interpreter;
+        private IInterpreter<Byte> interpreter;
 
         public event GetInputHandler<Char> InputRequested;
         public event OutputHandler<Char> OutputAvailable;
 
-        public CharacterInterpreter(IInterpreter interpreter)
+        public CharacterInterpreter(IInterpreter<Byte> interpreter)
         {
             this.interpreter = interpreter;
 
@@ -71,7 +71,7 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
-        private void Execute(Instruction instr)
+        public void Execute(Instruction instr)
         {
             this.interpreter.Execute(instr);
         }

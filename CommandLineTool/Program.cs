@@ -7,7 +7,7 @@
 namespace BrainfuckInterpreter.CommandLineTool
 {
     using System;
-    using System.Collections.Generic;
+    using System.IO;
     using Brainfuck.Interpreter.Core;
 
     /// <summary>
@@ -16,20 +16,100 @@ namespace BrainfuckInterpreter.CommandLineTool
     {
         public static void Main(String[] args)
         {
-            String program = args[0];
+            Boolean interactiveMode = false;
+            Boolean useFile = false;
+            Boolean strict = true;
 
-            StringInterpreter interpreter = new StringInterpreter(new InterpreterBase());
+            String filePath = String.Empty;
 
+            for (int i = 0; i < args.Length; i++)
+            {
+                switch (args[i])
+                {
+                    case "--help":
+                    case "-h":
+                        PrintUsage();
+                        Console.ReadLine();
+                        return;
+
+                    case "--nonStrict":
+                        strict = false;
+                        break;
+
+                    case "--interactive":
+                        interactiveMode = true;
+                        break;
+
+                    case "-f":
+                        useFile = true;
+                        filePath = args[++i];
+                        break;
+
+                    default:
+                        Console.WriteLine("Unknown argument: " + args[i]);
+                        break;
+                }
+            }
+
+            if (!useFile && !interactiveMode)
+            {
+                PrintUsage();
+                Console.ReadLine();
+                return;
+            }
+
+            CustomStringInterpreter interpreter = 
+                new CustomStringInterpreter(new ByteInterpreter());
+
+            interpreter.Strict = strict;
+
+            interpreter.InputRequested += interpreter_InputRequested;
             interpreter.OutputAvailable += interpreter_OutputAvailable;
 
-            interpreter.Execute(program);
+            if (useFile)
+            {
+                try
+                {
+                    using (StreamReader sr = new StreamReader(filePath))
+                    {
+                        interpreter.Execute(sr.ReadToEnd());
+                    }
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
 
-            Console.ReadLine();
+            String input = String.Empty;
+            while (interactiveMode)
+            {
+                input = Console.ReadLine();
+
+                if (input.Equals("exit"))
+                {
+                    break;
+                }
+
+                interpreter.Execute(input);
+            }
         }
 
-        static void interpreter_OutputAvailable(String output)
+        static void interpreter_OutputAvailable(string output)
         {
-            Console.WriteLine(output);
+            Console.Write(output);
+        }
+
+        static string interpreter_InputRequested()
+        {
+            return Console.ReadLine();
+        }
+
+        private static void PrintUsage()
+        {
+            Console.WriteLine("Usage:");
+            Console.WriteLine("\t--interactive\t\tEnters interactive mode.");
+            Console.WriteLine("\t--nonStrict\t\tIgnores all illegal characters.");
         }
     }
 }

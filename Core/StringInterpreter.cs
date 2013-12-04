@@ -14,14 +14,14 @@ namespace Brainfuck.Interpreter.Core
     /// <summary>
     /// A Brainfuck interpreter that takes and emits Strings.
     /// </summary>
-    public class StringInterpreter
+    public class StringInterpreter : IInterpreter<String>
     {
         private CharacterInterpreter interpreter;
 
         public event GetInputHandler<String> InputRequested;
         public event OutputHandler<String> OutputAvailable;
 
-        public StringInterpreter(IInterpreter interpreter)
+        public StringInterpreter(IInterpreter<Byte> interpreter)
         {
             this.interpreter = new CharacterInterpreter(interpreter);
 
@@ -29,12 +29,17 @@ namespace Brainfuck.Interpreter.Core
             this.interpreter.OutputAvailable += interpreter_OutputAvailable;
         }
 
-        public void Execute(String instr)
+        public virtual void Execute(String instr)
         {
             foreach (Char c in instr)
             {
                 this.interpreter.Execute(c);
             }
+        }
+
+        public void Execute(Instruction instr)
+        {
+            this.interpreter.Execute(instr);
         }
 
         private void interpreter_OutputAvailable(Char output)
@@ -47,7 +52,7 @@ namespace Brainfuck.Interpreter.Core
             return this.OnInputRequested();
         }
 
-        private void OnOutputAvailable(Char output)
+        protected virtual void OnOutputAvailable(Char output)
         {
             if (this.OutputAvailable != null)
             {
@@ -58,7 +63,7 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
-        private Char OnInputRequested()
+        protected virtual Char OnInputRequested()
         {
             if (this.InputRequested != null)
             {
@@ -67,7 +72,7 @@ namespace Brainfuck.Interpreter.Core
                 if (input.Length != 1)
                 {
                     throw new ArgumentException(
-                        "Input String may not consist of more than one character.");
+                        "Input String must not consist of more than one character.");
                 }
 
                 return input[0];

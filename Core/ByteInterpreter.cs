@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Interpreter.cs">
+// <copyright file="ByteInterpreter.cs">
 //     Copyright (c) Janis Fliegenschmidt
 // </copyright>
 //-----------------------------------------------------------------------
@@ -10,7 +10,7 @@ namespace Brainfuck.Interpreter.Core
     using System.Collections.Generic;
     using Brainfuck.Interpreter.Core.Exceptions;
 
-    public class InterpreterBase : IInterpreter
+    public class ByteInterpreter : IInterpreter<Byte>
     {
         private Stack<List<Instruction>> loopStack;
         private ByteList programSpace;
@@ -18,10 +18,15 @@ namespace Brainfuck.Interpreter.Core
         public event GetInputHandler<Byte> InputRequested;
         public event OutputHandler<Byte> OutputAvailable;
 
-        public InterpreterBase()
+        public ByteInterpreter()
         {
             this.loopStack = new Stack<List<Instruction>>();
             this.programSpace = new ByteList();
+        }
+
+        public void Execute(Byte instr)
+        {
+            this.Execute((Instruction)instr);
         }
 
         public void Execute(Instruction instr)

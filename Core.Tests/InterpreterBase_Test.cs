@@ -20,7 +20,7 @@ namespace Tests.BrainfuckInterpreter.Core
         [TestMethod]
         public void SmokeTest()
         {
-            IInterpreter interpreter = new InterpreterBase();
+            IInterpreter<Byte> interpreter = new ByteInterpreter();
 
             try
             {
