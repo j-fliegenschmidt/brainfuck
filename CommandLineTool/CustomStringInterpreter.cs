@@ -9,14 +9,14 @@ namespace BrainfuckInterpreter.CommandLineTool
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Linq;
     using Brainfuck.Interpreter.Core;
 
     /// <summary>
     /// </summary>
     internal class CustomStringInterpreter : StringInterpreter
     {
-        private static Char[] ALLOWED_CHARS =
-            { '+', '-', '>', '<', '.', ',', '[', ']' };
+        private readonly Char[] ALLOWED_CHARS = { '+', '-', '>', '<', '.', ',', '[', ']' };
 
         private Boolean strict;
 
@@ -39,7 +39,7 @@ namespace BrainfuckInterpreter.CommandLineTool
             }
         }
 
-        public void Execute(String instr)
+        new public void Execute(String instr)
         {
             if (this.Strict)
             {
@@ -52,13 +52,10 @@ namespace BrainfuckInterpreter.CommandLineTool
 
                 for (int i = 0; i < instrArr.Length; i++)
                 {
-                    for (int j = 0; j < ALLOWED_CHARS.Length; j++)
+                    if (ALLOWED_CHARS.Contains(instrArr[i]))
                     {
-                        if (ALLOWED_CHARS[j] == (instr[i]))
-                        {
-                            sanitizedInstr.Append(instrArr[i]);
-                            break;
-                        }
+                        sanitizedInstr.Append(instrArr[i]);
+                        break;
                     }
                 }
 

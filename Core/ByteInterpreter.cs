@@ -12,6 +12,7 @@ namespace Brainfuck.Interpreter.Core
 
     public class ByteInterpreter : IInterpreter<Byte>
     {
+        private readonly int MAX_DEPTH = 30000;
         private Stack<List<Instruction>> loopStack;
         private ByteList programSpace;
 
@@ -36,6 +37,11 @@ namespace Brainfuck.Interpreter.Core
 
         private void Execute(Instruction instr, int depth)
         {
+            if (depth > MAX_DEPTH)
+            {
+                throw new StackOverflowException("Recursion may not exceed depth of " + MAX_DEPTH);
+            }
+
             switch (instr)
             {
                 case Instruction.IncrementPointer:
@@ -74,6 +80,7 @@ namespace Brainfuck.Interpreter.Core
                     }
                     else
                     {
+                        //System.Runtime.CompilerServices.
                         for (int i = 1; i < this.loopStack.Peek().Count; i++)
                         {
                             this.Execute(this.loopStack.Peek()[i], depth + 1);

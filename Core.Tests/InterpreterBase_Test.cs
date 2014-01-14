@@ -11,6 +11,7 @@ namespace Tests.BrainfuckInterpreter.Core
     using Brainfuck.Interpreter.Core;
     using Brainfuck.Interpreter.Core.Exceptions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Runtime.ExceptionServices;
 
     /// <summary>
     /// </summary>
@@ -66,6 +67,8 @@ namespace Tests.BrainfuckInterpreter.Core
             for (int i = 0; i < output.Count; i++)
             {
                 Assert.AreEqual(1, output[i]);
+
+
             }
         }
 
@@ -78,6 +81,17 @@ namespace Tests.BrainfuckInterpreter.Core
             {
                 interpreter.Execute(Instruction.IncrementValue);
                 interpreter.Execute(Instruction.BeginLoop);
+
+                for (int i = 0; i < 10000; i++)
+                {
+                    interpreter.Execute(Instruction.IncrementValue);
+                    interpreter.Execute(Instruction.IncrementValue);
+                    interpreter.Execute(Instruction.IncrementValue);
+                    interpreter.Execute(Instruction.DecrementValue);
+                    interpreter.Execute(Instruction.DecrementValue);
+                    interpreter.Execute(Instruction.DecrementValue);
+                }
+
                 interpreter.Execute(Instruction.EndLoop);
 
                 Assert.Fail("This should cause a stack overflow.");
