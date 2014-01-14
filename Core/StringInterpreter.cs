@@ -6,10 +6,9 @@
 
 namespace Brainfuck.Interpreter.Core
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using Brainfuck.Interpreter.Core.Exceptions;
+    using System;
+    using System.Text;
 
     /// <summary>
     /// A Brainfuck interpreter that takes and emits Strings.

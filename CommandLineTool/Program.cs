@@ -6,9 +6,9 @@
 
 namespace BrainfuckInterpreter.CommandLineTool
 {
+    using Brainfuck.Interpreter.Core;
     using System;
     using System.IO;
-    using Brainfuck.Interpreter.Core;
 
     /// <summary>
     /// </summary>

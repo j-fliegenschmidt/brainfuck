@@ -6,10 +6,13 @@
 
 namespace Brainfuck.Interpreter.Core
 {
+    using Brainfuck.Interpreter.Core.Exceptions;
     using System;
     using System.Collections.Generic;
-    using Brainfuck.Interpreter.Core.Exceptions;
 
+    /// <summary>
+    /// The base interpreter class providing the actual interpretation logic.
+    /// </summary>
     public class ByteInterpreter : IInterpreter<Byte>
     {
         private readonly int MAX_DEPTH = 30000;
@@ -25,16 +28,32 @@ namespace Brainfuck.Interpreter.Core
             this.programSpace = new ByteList();
         }
 
+        /// <summary>
+        /// Executes the instruction that is mapped to the input byte.
+        /// </summary>
+        /// <param name="instr">The instruction byte.</param>
         public void Execute(Byte instr)
         {
             this.Execute((Instruction)instr);
         }
 
+        /// <summary>
+        /// Executes the passed instruction.
+        /// </summary>
+        /// <param name="instr">The instruction.</param>
         public void Execute(Instruction instr)
         {
             this.Execute(instr, 0);
         }
 
+        /// <summary>
+        /// A private wrapper for the Execute method that also takes a
+        /// recursion depth parameter, which is needed to preempt
+        /// stack overflow exceptions and for the instruction caching 
+        /// when looping.
+        /// </summary>
+        /// <param name="instr">The instruction.</param>
+        /// <param name="depth">The current recursion depth.</param>
         private void Execute(Instruction instr, int depth)
         {
             if (depth > MAX_DEPTH)
@@ -80,7 +99,6 @@ namespace Brainfuck.Interpreter.Core
                     }
                     else
                     {
-                        //System.Runtime.CompilerServices.
                         for (int i = 1; i < this.loopStack.Peek().Count; i++)
                         {
                             this.Execute(this.loopStack.Peek()[i], depth + 1);

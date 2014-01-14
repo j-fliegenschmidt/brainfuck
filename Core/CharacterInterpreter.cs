@@ -6,10 +6,8 @@
 
 namespace Brainfuck.Interpreter.Core
 {
-    using System;
-    using System.Collections.Generic;
-    using Brainfuck.Interpreter.Core;
     using Brainfuck.Interpreter.Core.Exceptions;
+    using System;
 
     /// <summary>
     /// Brainfuck Interpreter that takes characters instead of enum values.

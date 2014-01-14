@@ -6,7 +6,6 @@
 
 namespace Brainfuck.Interpreter.Core
 {
-    using System;
 
     /// <summary>
     /// 

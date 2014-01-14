@@ -7,7 +7,6 @@
 namespace Brainfuck.Interpreter.Core
 {
     using System;
-    using System.Collections.Generic;
 
     internal class ByteList
     {

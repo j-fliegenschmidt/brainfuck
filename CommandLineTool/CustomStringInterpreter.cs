@@ -6,11 +6,10 @@
 
 namespace BrainfuckInterpreter.CommandLineTool
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Linq;
     using Brainfuck.Interpreter.Core;
+    using System;
+    using System.Linq;
+    using System.Text;
 
     /// <summary>
     /// </summary>

@@ -6,17 +6,17 @@
 
 namespace Tests.BrainfuckInterpreter.Core
 {
-    using System;
-    using System.Collections.Generic;
     using Brainfuck.Interpreter.Core;
     using Brainfuck.Interpreter.Core.Exceptions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.Runtime.ExceptionServices;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
+    /// Test class containing ByteInterpreter related tests.
     /// </summary>
     [TestClass]
-    public class InterpreterBase_Test
+    public class ByteInterpreter_Test
     {
         [TestMethod]
         public void SmokeTest()

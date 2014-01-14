@@ -6,8 +6,6 @@
 
 namespace Tests.BrainfuckInterpreter
 {
-    using System;
-    using System.Collections.Generic;
     using Brainfuck.Interpreter.Core;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

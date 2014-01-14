@@ -7,7 +7,6 @@
 namespace Brainfuck.Interpreter.Core.Exceptions
 {
     using System;
-    using System.Collections.Generic;
     using System.Runtime.Serialization;
 
     /// <summary>
