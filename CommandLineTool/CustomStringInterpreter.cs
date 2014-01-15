@@ -15,7 +15,7 @@ namespace BrainfuckInterpreter.CommandLineTool
     /// </summary>
     internal class CustomStringInterpreter : StringInterpreter
     {
-        private readonly Char[] ALLOWED_CHARS = { '+', '-', '>', '<', '.', ',', '[', ']' };
+        private static readonly Char[] ALLOWED_CHARS = { '+', '-', '>', '<', '.', ',', '[', ']' };
 
         private Boolean strict;
 
@@ -54,7 +54,6 @@ namespace BrainfuckInterpreter.CommandLineTool
                     if (ALLOWED_CHARS.Contains(instrArr[i]))
                     {
                         sanitizedInstr.Append(instrArr[i]);
-                        break;
                     }
                 }
 
