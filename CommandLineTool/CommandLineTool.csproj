@@ -7,7 +7,7 @@
     <ProjectGuid>{AC3AFB27-4FFE-4226-8627-1A3070E1C8BB}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BrainfuckInterpreter.CommandLineTool</RootNamespace>
+    <RootNamespace>Brainfuck.CommandLineTool</RootNamespace>
     <AssemblyName>CommandLineTool</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

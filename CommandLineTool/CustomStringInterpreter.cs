@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace BrainfuckInterpreter.CommandLineTool
+namespace Brainfuck.CommandLineTool
 {
     using Brainfuck.Interpreter.Core;
     using System;

@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Tests.BrainfuckInterpreter.Core
+namespace Brainfuck.Tests.Interpreter.Core
 {
     using Brainfuck.Interpreter.Core;
     using Brainfuck.Interpreter.Core.Exceptions;
@@ -39,10 +39,7 @@ namespace Tests.BrainfuckInterpreter.Core
 
             List<Byte> output = new List<Byte>();
 
-            interpreter.OutputAvailable += (o) =>
-            {
-                output.Add(o);
-            };
+            interpreter.OutputAvailable += (o) => output.Add(o);
 
             const int RUNS = 20;
 
@@ -67,8 +64,6 @@ namespace Tests.BrainfuckInterpreter.Core
             for (int i = 0; i < output.Count; i++)
             {
                 Assert.AreEqual(1, output[i]);
-
-
             }
         }
 
@@ -82,7 +77,7 @@ namespace Tests.BrainfuckInterpreter.Core
                 interpreter.Execute(Instruction.IncrementValue);
                 interpreter.Execute(Instruction.BeginLoop);
 
-                for (int i = 0; i < 10000; i++)
+                for (int i = 0; i < 1000; i++)
                 {
                     interpreter.Execute(Instruction.IncrementValue);
                     interpreter.Execute(Instruction.IncrementValue);
@@ -102,8 +97,7 @@ namespace Tests.BrainfuckInterpreter.Core
             }
             catch (Exception)
             {
-                Assert.Fail(
-                    "This should cause _nothing but_ a stack overflow.");
+                Assert.Fail("This should cause _nothing but_ a stack overflow.");
             }
         }
     }

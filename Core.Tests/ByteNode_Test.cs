@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Tests.BrainfuckInterpreter
+namespace Brainfuck.Tests.Interpreter.Core
 {
     using Brainfuck.Interpreter.Core;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
