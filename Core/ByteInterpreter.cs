@@ -49,7 +49,7 @@ namespace Brainfuck.Interpreter.Core
         /// <summary>
         /// A private wrapper for the Execute method that also takes a
         /// recursion depth parameter, which is needed to preempt
-        /// stack overflow exceptions and for the instruction caching 
+        /// stack overflow exceptions and for instruction caching 
         /// when looping.
         /// </summary>
         /// <param name="instr">The instruction.</param>
@@ -123,17 +123,21 @@ namespace Brainfuck.Interpreter.Core
 
         private void OnOutputAvailable(Byte output)
         {
-            if (this.OutputAvailable != null)
+            OutputHandler<Byte> handler = this.OutputAvailable;
+
+            if (handler != null)
             {
-                this.OutputAvailable(output);
+                handler(output);
             }
         }
 
         private Byte OnInputRequested()
         {
-            if (this.InputRequested != null)
+            GetInputHandler<Byte> handler = this.InputRequested;
+
+            if (handler != null)
             {
-                return this.InputRequested();
+                return handler();
             }
             else
             {
