@@ -11,6 +11,7 @@ namespace Brainfuck.Tests.Interpreter.Core
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Collections.Generic;
+    using System.Threading;
 
     /// <summary>
     /// Test class containing ByteInterpreter related tests.
@@ -70,34 +71,22 @@ namespace Brainfuck.Tests.Interpreter.Core
         [TestMethod]
         public void StackOverflow()
         {
-            IInterpreter interpreter = new ByteInterpreter();
-
             try
             {
+                IInterpreter interpreter = new ByteInterpreter();
                 interpreter.Execute(Instruction.IncrementValue);
                 interpreter.Execute(Instruction.BeginLoop);
-
-                for (int i = 0; i < 1000; i++)
-                {
-                    interpreter.Execute(Instruction.IncrementValue);
-                    interpreter.Execute(Instruction.IncrementValue);
-                    interpreter.Execute(Instruction.IncrementValue);
-                    interpreter.Execute(Instruction.DecrementValue);
-                    interpreter.Execute(Instruction.DecrementValue);
-                    interpreter.Execute(Instruction.DecrementValue);
-                }
-
                 interpreter.Execute(Instruction.EndLoop);
 
                 Assert.Fail("This should cause a stack overflow.");
             }
             catch (StackOverflowException)
             {
-                // this is expected
+                // expected
             }
-            catch (Exception)
+            catch
             {
-                Assert.Fail("This should cause _nothing but_ a stack overflow.");
+                Assert.Fail("This should cause _nothing_ but a stack overflow.");
             }
         }
     }

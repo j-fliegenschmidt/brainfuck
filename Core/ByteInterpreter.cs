@@ -15,7 +15,7 @@ namespace Brainfuck.Interpreter.Core
     /// </summary>
     public class ByteInterpreter : IInterpreter<Byte>
     {
-        private readonly int MAX_DEPTH = 30000;
+        private readonly int MAX_DEPTH = 7000;
         private Stack<List<Instruction>> loopStack;
         private ByteList programSpace;
 
@@ -43,20 +43,20 @@ namespace Brainfuck.Interpreter.Core
         /// <param name="instr">The instruction.</param>
         public void Execute(Instruction instr)
         {
-            this.Execute(instr, 0);
+            this.Execute(instr, 0, 0);
         }
 
         /// <summary>
-        /// A private wrapper for the Execute method that also takes a
-        /// recursion depth parameter, which is needed to preempt
+        /// A private wrapper for the Execute method that also takes
+        /// recursion depth parameters, which are needed to preempt
         /// stack overflow exceptions and for instruction caching 
         /// when looping.
         /// </summary>
         /// <param name="instr">The instruction.</param>
-        /// <param name="depth">The current recursion depth.</param>
-        private void Execute(Instruction instr, int depth)
+        /// <param name="loopDepth">The current recursion depth.</param>
+        private void Execute(Instruction instr, int loopDepth, int recursionDepth)
         {
-            if (depth > MAX_DEPTH)
+            if (recursionDepth > MAX_DEPTH)
             {
                 throw new StackOverflowException("Recursion may not exceed depth of " + MAX_DEPTH);
             }
@@ -95,16 +95,16 @@ namespace Brainfuck.Interpreter.Core
 
                     if (this.programSpace.Value == 0)
                     {
-                        loopStack.Pop();
+                        this.loopStack.Pop();
                     }
                     else
                     {
                         for (int i = 1; i < this.loopStack.Peek().Count; i++)
                         {
-                            this.Execute(this.loopStack.Peek()[i], depth + 1);
+                            this.Execute(this.loopStack.Peek()[i], loopDepth + 1, loopDepth + 1);
                         }
 
-                        this.Execute(Instruction.EndLoop, depth + 1);
+                        this.Execute(Instruction.EndLoop, loopDepth, recursionDepth + 1);
                     }
 
                     break;
@@ -115,7 +115,7 @@ namespace Brainfuck.Interpreter.Core
                     break;
             }
 
-            if (this.loopStack.Count == depth + 1)
+            if (this.loopStack.Count == loopDepth + 1)
             {
                 this.loopStack.Peek().Add(instr);
             }
