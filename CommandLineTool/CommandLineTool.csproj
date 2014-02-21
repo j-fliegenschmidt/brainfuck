@@ -36,7 +36,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomStringInterpreter.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="SanitizingStringInterpreter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

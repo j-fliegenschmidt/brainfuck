@@ -58,8 +58,8 @@ namespace Brainfuck.CommandLineTool
                 return;
             }
 
-            CustomStringInterpreter interpreter = 
-                new CustomStringInterpreter(new ByteInterpreter());
+            SanitizingStringInterpreter interpreter = 
+                new SanitizingStringInterpreter(new ByteInterpreter());
 
             interpreter.Strict = strict;
 
