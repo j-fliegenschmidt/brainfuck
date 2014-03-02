@@ -8,6 +8,10 @@ namespace Brainfuck.Interpreter.Core
 {
     using System;
 
+    /// <summary>
+    /// ByteList is a wrapper around a list of bytes that handles
+    /// creation and navigation between nodes.
+    /// </summary>
     internal class ByteList
     {
         private const int MAX_NODES = 30000;
@@ -20,6 +24,9 @@ namespace Brainfuck.Interpreter.Core
             this.nodeCounter = 1;
         }
 
+        /// <summary>
+        /// Gets or sets the value of the the current node.
+        /// </summary>
         public Byte Value
         {
             get
@@ -33,16 +40,25 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Increments the value of the current node.
+        /// </summary>
         public void IncrementValue()
         {
             this.current.IncrementValue();
         }
 
+        /// <summary>
+        /// Decrements the value of the curret node.
+        /// </summary>
         public void DecrementValue()
         {
             this.current.DecrementValue();
         }
 
+        /// <summary>
+        /// Increments the pointer, i.e. sets the next node as the current.
+        /// </summary>
         public void IncrementPointer()
         {
             if (this.current.HasNext)
@@ -64,6 +80,9 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Decrements the pointer, i.e. sets the previous node as the current.
+        /// </summary>
         public void DecrementPointer()
         {
             if (this.current.HasPrevious)
@@ -77,6 +96,10 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Private wrapper for the logic responsible for adding
+        /// a new ByteNode.
+        /// </summary>
         private void AddNode()
         {
             if (this.current.HasNext)

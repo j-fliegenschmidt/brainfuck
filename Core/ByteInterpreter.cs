@@ -121,6 +121,10 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Internal handling of the OutputAvailable event.
+        /// </summary>
+        /// <param name="output">The output to be exposed.</param>
         private void OnOutputAvailable(Byte output)
         {
             OutputHandler<Byte> handler = this.OutputAvailable;
@@ -131,6 +135,10 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Internal handling of the InputRequested event.
+        /// </summary>
+        /// <returns>Returns the requested input.</returns>
         private Byte OnInputRequested()
         {
             GetInputHandler<Byte> handler = this.InputRequested;

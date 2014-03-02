@@ -11,7 +11,8 @@ namespace Brainfuck.Interpreter.Core
     using System.Text;
 
     /// <summary>
-    /// A Brainfuck interpreter that takes and emits Strings.
+    /// Acts as a proxy for the BrainfuckInterpreter. Accepts
+    /// and emits strings in addition to enum values.
     /// </summary>
     public class StringInterpreter : IInterpreter<String>
     {
@@ -24,10 +25,15 @@ namespace Brainfuck.Interpreter.Core
         {
             this.interpreter = new CharacterInterpreter(interpreter);
 
-            this.interpreter.InputRequested += interpreter_InputRequested;
-            this.interpreter.OutputAvailable += interpreter_OutputAvailable;
+            this.interpreter.InputRequested += () => { return this.OnInputRequested(); };
+            this.interpreter.OutputAvailable += (output) => this.OnOutputAvailable(output);
         }
 
+        /// <summary>
+        /// Executes the commands associated with the characters in the
+        /// given string.
+        /// </summary>
+        /// <param name="instr">The string of instruction characters.</param>
         public virtual void Execute(String instr)
         {
             foreach (Char c in instr)
@@ -36,32 +42,19 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Executes the specified instruction.
+        /// </summary>
+        /// <param name="instr">The instruction.</param>
         public void Execute(Instruction instr)
         {
             this.interpreter.Execute(instr);
         }
 
-        private void interpreter_OutputAvailable(Char output)
-        {
-            this.OnOutputAvailable(output);
-        }
-
-        private Char interpreter_InputRequested()
-        {
-            return this.OnInputRequested();
-        }
-
-        protected virtual void OnOutputAvailable(Char output)
-        {
-            if (this.OutputAvailable != null)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append(output);
-
-                this.OutputAvailable(sb.ToString());
-            }
-        }
-
+        /// <summary>
+        /// Internal handler for the OnInputRequested event.
+        /// </summary>
+        /// <returns>The requested input.</returns>
         protected virtual Char OnInputRequested()
         {
             if (this.InputRequested != null)
@@ -79,6 +72,21 @@ namespace Brainfuck.Interpreter.Core
             else
             {
                 throw new NoInputSourceAvailableException();
+            }
+        }
+
+        /// <summary>
+        /// Internal handler for the OutputAvailable event.
+        /// </summary>
+        /// <param name="output">The available output.</param>
+        protected virtual void OnOutputAvailable(Char output)
+        {
+            if (this.OutputAvailable != null)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(output);
+
+                this.OutputAvailable(sb.ToString());
             }
         }
     }

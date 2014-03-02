@@ -10,6 +10,7 @@ namespace Brainfuck.Tests.Interpreter.Core
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
+    /// Test class containing ByteNode related tests.
     /// </summary>
     [TestClass]
     public class ByteNode_Test

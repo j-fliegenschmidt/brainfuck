@@ -11,7 +11,6 @@ namespace Brainfuck.Tests.Interpreter.Core
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Collections.Generic;
-    using System.Threading;
 
     /// <summary>
     /// Test class containing ByteInterpreter related tests.

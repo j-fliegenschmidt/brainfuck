@@ -21,6 +21,9 @@ namespace Brainfuck.Interpreter.Core
             this.next = null;
         }
 
+        /// <summary>
+        /// Returns true if the NextNode reference is set.
+        /// </summary>
         public Boolean HasNext
         {
             get
@@ -29,6 +32,9 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Returns true if the PreviousNode reference is set.
+        /// </summary>
         public Boolean HasPrevious
         {
             get
@@ -37,6 +43,9 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Gets or sets the NextNode.
+        /// </summary>
         public ByteNode Next
         {
             get
@@ -58,6 +67,9 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Gets or sets the Previous node.
+        /// </summary>
         public ByteNode Previous
         {
             get
@@ -79,6 +91,9 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Gets or sets the nodes value.
+        /// </summary>
         public Byte Value
         {
             get
@@ -92,11 +107,17 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Increments the node's value.
+        /// </summary>
         public void IncrementValue()
         {
             ++this.value;
         }
 
+        /// <summary>
+        /// Decrements the node's value.
+        /// </summary>
         public void DecrementValue()
         {
             --this.value;

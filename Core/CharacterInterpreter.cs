@@ -10,7 +10,8 @@ namespace Brainfuck.Interpreter.Core
     using System;
 
     /// <summary>
-    /// Brainfuck Interpreter that takes characters instead of enum values.
+    /// Acts as a proxy for the BrainfuckInterpreter. Accepts
+    /// and emits characters in addition to enum values.
     /// </summary>
     public class CharacterInterpreter : IInterpreter<Char>
     {
@@ -23,10 +24,15 @@ namespace Brainfuck.Interpreter.Core
         {
             this.interpreter = interpreter;
 
-            this.interpreter.InputRequested += interpreter_InputRequested;
-            this.interpreter.OutputAvailable += interpreter_OutputAvailable;
+            this.interpreter.InputRequested += () => { return this.OnInputRequested(); };
+            this.interpreter.OutputAvailable += (output) => this.OnOutputAvailable(output);
         }
 
+        /// <summary>
+        /// Executes the command associated with the given character.
+        /// </summary>
+        /// <param name="instr">The character that represents the 
+        /// brainfuck command to be executed.</param>
         public void Execute(Char instr)
         {
             switch (instr)
@@ -69,21 +75,19 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Executes the specified instruction.
+        /// </summary>
+        /// <param name="instr">The instruction.</param>
         public void Execute(Instruction instr)
         {
             this.interpreter.Execute(instr);
         }
 
-        private Byte interpreter_InputRequested()
-        {
-            return this.OnInputRequested();
-        }
-
-        private void interpreter_OutputAvailable(Byte output)
-        {
-            this.OnOutputAvailable(output);
-        }
-
+        /// <summary>
+        /// Internal handler for the OnInputRequested event.
+        /// </summary>
+        /// <returns>The requested input.</returns>
         private Byte OnInputRequested()
         {
             if (this.InputRequested != null)
@@ -98,6 +102,10 @@ namespace Brainfuck.Interpreter.Core
             }
         }
 
+        /// <summary>
+        /// Internal handler for the OutputAvailable event.
+        /// </summary>
+        /// <param name="output">The available output.</param>
         private void OnOutputAvailable(Byte output)
         {
             if (this.OutputAvailable != null)
