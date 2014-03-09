@@ -53,7 +53,8 @@ namespace Brainfuck.Interpreter.Core
         /// when looping.
         /// </summary>
         /// <param name="instr">The instruction.</param>
-        /// <param name="loopDepth">The current recursion depth.</param>
+        /// <param name="loopDepth">The current loop depth.</param>
+        /// <param name="recursionDepth">The current recursion depth.</param>
         private void Execute(Instruction instr, int loopDepth, int recursionDepth)
         {
             if (recursionDepth > MAX_DEPTH)

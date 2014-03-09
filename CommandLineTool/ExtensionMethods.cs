@@ -6,16 +6,16 @@
 
     internal static class ExtensionMethods
     {
+        internal static Char[] SANE_CHARS = { '+', '-', '>', '<', '.', ',', '[', ']' };
+
         internal static String Sanitize(this String instr)
         {
-            Char[] ALLOWED_CHARS = { '+', '-', '>', '<', '.', ',', '[', ']' };
-
             StringBuilder sanitizedInstr = new StringBuilder();
             Char[] instrArr = instr.ToCharArray();
 
             for (int i = 0; i < instrArr.Length; i++)
             {
-                if (ALLOWED_CHARS.Contains(instrArr[i]))
+                if (SANE_CHARS.Contains(instrArr[i]))
                 {
                     sanitizedInstr.Append(instrArr[i]);
                 }
