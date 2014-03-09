@@ -50,6 +50,7 @@
     <Compile Include="ByteList_Test.cs" />
     <Compile Include="ByteNode_Test.cs" />
     <Compile Include="ByteInterpreter_Test.cs" />
+    <Compile Include="CharacterInterpreter_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
