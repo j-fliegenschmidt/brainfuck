@@ -22,6 +22,11 @@ namespace Brainfuck.Interpreter.Core
 
         public CharacterInterpreter(IInterpreter<Byte> interpreter)
         {
+            if (interpreter == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.interpreter = interpreter;
 
             this.interpreter.InputRequested += () => { return this.OnInputRequested(); };

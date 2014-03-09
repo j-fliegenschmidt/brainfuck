@@ -23,6 +23,11 @@ namespace Brainfuck.Interpreter.Core
 
         public StringInterpreter(IInterpreter<Byte> interpreter)
         {
+            if (interpreter == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.interpreter = new CharacterInterpreter(interpreter);
 
             this.interpreter.InputRequested += () => { return this.OnInputRequested(); };

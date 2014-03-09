@@ -6,3 +6,5 @@ Core/bin/
 *.suo
 CommandLineTool/bin/
 CommandLineTool/obj/
+/GraphicBrainfuck/bin/Debug
+/GraphicBrainfuck/obj/Debug

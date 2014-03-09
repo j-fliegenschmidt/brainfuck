@@ -20,6 +20,11 @@ namespace Brainfuck.CommandLineTool
         public SanitizingStringInterpreter(IInterpreter<Byte> interpreter)
             : base(interpreter)
         {
+            if (interpreter == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             this.strict = false;
         }
 
